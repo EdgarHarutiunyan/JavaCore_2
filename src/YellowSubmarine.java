@@ -1,8 +1,11 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.lang.reflect.Array;
+import java.util.*;
+import java.util.function.Predicate;
 
 public class YellowSubmarine {
     public static void main(String[] args) {
+
+        //Part 1
         String lyrics = "In the town where I was born\n" +
                 "Lived a man who sailed to sea\n" +
                 "And he told us of his life\n" +
@@ -65,5 +68,14 @@ public class YellowSubmarine {
             count += entry.getValue();
         }
         System.out.println("Word Count: " + count);
+
+        //PART 2
+        List<String> ll = Arrays.asList(wordsArray);
+
+        ArrayList<String> al = new ArrayList<>(new HashSet<>(ll));
+        System.out.println(al);
+
+        al.sort(Comparator.comparingInt(String::length));
+        System.out.println(al);
     }
 }
