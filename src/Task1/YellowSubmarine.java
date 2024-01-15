@@ -1,3 +1,7 @@
+package Task1;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class YellowSubmarine {
@@ -92,8 +96,34 @@ public class YellowSubmarine {
             }
             filtered.add(s);
         }
-        System.out.println(filtered);
+        System.out.println(filtered + "\n");
 
+        //PART 3
+        System.out.println("Part 4 Task 1" + "\n");
 
+        try {
+            File lyricsInTXT = new File("YellowSubmarine.txt");
+            Scanner sc = new Scanner(lyricsInTXT);
+
+            exists(sc);
+
+        } catch (FileNotFoundException | BeatlesException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public static void exists(Scanner scanner) throws BeatlesException {
+        boolean found = false;
+
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            if (line.contains("Show must go on!")) {
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            throw new BeatlesException();
+        }
     }
 }
