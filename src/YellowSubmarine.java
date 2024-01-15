@@ -1,11 +1,10 @@
-import java.lang.reflect.Array;
 import java.util.*;
-import java.util.function.Predicate;
 
 public class YellowSubmarine {
     public static void main(String[] args) {
 
         //Part 1
+        System.out.println("Part 1 of Task 1" + "\n");
         String lyrics = "In the town where I was born\n" +
                 "Lived a man who sailed to sea\n" +
                 "And he told us of his life\n" +
@@ -51,7 +50,6 @@ public class YellowSubmarine {
                 "We all live in a yellow submarine\n" +
                 "Yellow submarine, yellow submarine";
 
-
         lyrics = lyrics.replaceAll("[,\\n()]", " ").toLowerCase();
         String[] wordsArray = lyrics.split("\\s+");
         System.out.println(lyrics);
@@ -68,14 +66,34 @@ public class YellowSubmarine {
             count += entry.getValue();
         }
         System.out.println("Word Count: " + count);
+        System.out.println();
+
 
         //PART 2
-        List<String> ll = Arrays.asList(wordsArray);
+        System.out.println("Part 2 of Task 1" + "\n");
+        List<String> stringList = Arrays.asList(wordsArray);
 
-        ArrayList<String> al = new ArrayList<>(new HashSet<>(ll));
-        System.out.println(al);
+        ArrayList<String> listOfUnique = new ArrayList<>(new HashSet<>(stringList));
+        System.out.println(listOfUnique);
 
-        al.sort(Comparator.comparingInt(String::length));
-        System.out.println(al);
+        listOfUnique.sort(Comparator.comparingInt(String::length));
+        System.out.println(listOfUnique);
+        System.out.println();
+
+
+        //PART 3
+        System.out.println("Part 3 of Task 1" + "\n");
+
+        List<String> filtered = new LinkedList<>();
+
+        for (String s: stringList) {
+            if (s.equals("yellow") || s.equals("submarine")) {
+                continue;
+            }
+            filtered.add(s);
+        }
+        System.out.println(filtered);
+
+
     }
 }
